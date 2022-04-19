@@ -25,36 +25,14 @@ def play_game():
     # comparing moves the players have entered
     if player == computer:
         print("It's a draw.")
+    elif (player == "scissors" and computer == "paper") or \
+            (player == "paper" and computer == "rock") or \
+            (player == "rock" and computer == "scissors"):
+        print(f"{player_name} wins!")
+        player_score += 1
     else:
-        while player == "rock":
-            if computer == "paper":
-                print("computer wins!")
-                computer_score += 1
-                break
-            elif computer == "scissors":
-                print(f"{player_name} wins!")
-                player_score += 1
-                break
-
-        while player == "paper":
-            if computer == "scissors":
-                print("computer wins!")
-                computer_score += 1
-                break
-            elif computer == "rock":
-                print(f"{player_name} wins!")
-                player_score += 1
-                break
-
-        while player == "scissors":
-            if computer == "rock":
-                print("computer wins!")
-                computer_score += 1
-                break
-            elif computer == "paper":
-                print(f"{player_name} wins!")
-                player_score += 1
-                break
+        print("Computer wins!")
+        computer_score += 1
     game_count += 1
 
 
@@ -62,8 +40,8 @@ print("\n ROCK PAPER SCISSORS \n ")
 
 # asks for player's name
 player_name = input("What is your name? \n")
-with open(f"{player_name}.txt", "a") as username:
-    username.write(f"USERNAME: {player_name}")
+# with open(f"{player_name}.txt", "a") as username:      ! upis u tekst fajl
+#    username.write(f"USERNAME: {player_name}")
 
 
 # boolean for repeating the game
