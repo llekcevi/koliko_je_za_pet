@@ -46,6 +46,7 @@ void main() {
 
   String time = DateTime.now().toString();
   game.setDateTime = time;
+  print(time);
 
   List<String> playerList = [];
   List<int> score = [];
@@ -56,14 +57,16 @@ void main() {
     String playerName = stdin.readLineSync()!;
     playerList.add(playerName);
     game.setUserName = playerList;
+    print(playerList);
 
     print("$player, what is your score?");
     int playerScore = int.parse(stdin.readLineSync()!);
     score.add(playerScore);
     game.setUserScore = score;
+    print(score);
   }
 
-  print(GameInfo());
+  print(game);
 /*
   User user1 = User();
 
