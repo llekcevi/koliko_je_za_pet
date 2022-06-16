@@ -41,53 +41,40 @@ class GameInfo {
 void main() {
   GameInfo game = GameInfo();
 
-  print("How many players are in your game?");
-  int numberOfPlayers = int.parse(stdin.readLineSync()!);
-
   String time = DateTime.now().toString();
   game.setDateTime = time;
-  print(time);
 
   List<String> playerList = [];
   List<int> score = [];
 
+  inputNamesAndScores(playerList, game, score);
+
+  writeResults(game);
+
+  print(game);
+}
+
+void writeResults(GameInfo game) {
+  var resultsFile = File('results.txt');
+  var sink = resultsFile.openWrite(mode: FileMode.append);
+  sink.write("\n $game");
+  sink.close();
+}
+
+void inputNamesAndScores(
+    List<String> playerList, GameInfo game, List<int> score) {
+  print("How many players are in your game?");
+  int numberOfPlayers = int.parse(stdin.readLineSync()!);
+
   for (int player = 0; player <= numberOfPlayers - 1; player++,) {
-    print("Enter your name");
-    print(player);
+    print("Player ${player + 1}, enter your name");
     String playerName = stdin.readLineSync()!;
     playerList.add(playerName);
     game.setUserName = playerList;
-    print(playerList);
 
-    print("$player, what is your score?");
+    print("$playerName, what is your score?");
     int playerScore = int.parse(stdin.readLineSync()!);
     score.add(playerScore);
     game.setUserScore = score;
-    print(score);
   }
-
-  print(game);
-/*
-  User user1 = User();
-
-  print("Enter your name:");
-  String name = stdin.readLineSync()!;
-
-  user1.setUserName = name;
-
-  print("Welcome ${user1.getUserName}, current time is $time");
-
-  
-  print("Enter your score:");
-  int userScore = int.parse(stdin.readLineSync()!);
-
-  print("We currently support only Everdell base game");
-  String gameVersion = "Everdell, base game";
-
-  User user1 = User(userName, userScore, gameVersion);
-
-  print("you are $userName");
-
-  print(user1);
-  */
 }
