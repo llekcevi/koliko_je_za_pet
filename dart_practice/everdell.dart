@@ -2,8 +2,9 @@ import 'dart:io';
 
 class GameInfo {
   List<String> userNames = [];
-  List<int> userScore = [];
+  List<Map<String, int>> userScore = [];
   String dateTime = "";
+
   //String gameVersion;
 
   //User(this.name, this.score, this.gameVersion);
@@ -12,20 +13,20 @@ class GameInfo {
     return userNames;
   }
 
-  set setUserName(List<String> playerList) {
-    userNames = playerList;
-  }
-
-  List get getScore {
+  List<Map<String, int>> get getScore {
     return userScore;
-  }
-
-  set setUserScore(List<int> score) {
-    userScore = score;
   }
 
   String get getDateTime {
     return dateTime;
+  }
+
+  set setUserName(List<String> playerList) {
+    userNames = playerList;
+  }
+
+  set setUserScore(List<Map<String, int>> score) {
+    userScore = score;
   }
 
   set setDateTime(String time) {
@@ -45,9 +46,16 @@ void main() {
   game.setDateTime = time;
 
   List<String> playerList = [];
-  List<int> score = [];
+  Map<String, int> score = {
+    "baseCardPoints": 0,
+    "pointTokens": 0,
+    "prosperityBonusCardPoints": 0,
+    "jurneyPoints": 0,
+    "events": 0
+  };
+  List<Map<String, int>> scoreList = [];
 
-  inputNamesAndScores(playerList, game, score);
+  inputNamesAndScores(playerList, game, score, scoreList);
 
   writeResults(game);
 
@@ -61,8 +69,8 @@ void writeResults(GameInfo game) {
   sink.close();
 }
 
-void inputNamesAndScores(
-    List<String> playerList, GameInfo game, List<int> score) {
+void inputNamesAndScores(List<String> playerList, GameInfo game,
+    Map<String, int> score, List<Map<String, int>> scoreList) {
   print("How many players are in your game?");
   int numberOfPlayers = int.parse(stdin.readLineSync()!);
 
@@ -72,9 +80,28 @@ void inputNamesAndScores(
     playerList.add(playerName);
     game.setUserName = playerList;
 
-    print("$playerName, what is your score?");
-    int playerScore = int.parse(stdin.readLineSync()!);
-    score.add(playerScore);
-    game.setUserScore = score;
+    inputPoints(playerName, score);
+    scoreList.add(score);
+    game.setUserScore = scoreList;
+    //game.setUserScore = score;
   }
+}
+
+void inputPoints(String playerName, Map<String, int> score) {
+  print("$playerName, enter your points");
+  print("Base points for cards:"); //baseCardPoints
+  int base = int.parse(stdin.readLineSync()!);
+  score["baseCardPoints"] = base;
+  print("Point tokens:"); //pointTokens
+  int token = int.parse(stdin.readLineSync()!);
+  score["pointTokens"] = token;
+  print("Prosperity card bonus points:"); //prosperityBonusCardPoints
+  int prosperity = int.parse(stdin.readLineSync()!);
+  score["prosperityBonusCardPoints"] = prosperity;
+  print("Journey points:"); //journeyPoints
+  int journey = int.parse(stdin.readLineSync()!);
+  score["Journey points"] = journey;
+  print("Events:"); //events
+  int event = int.parse(stdin.readLineSync()!);
+  score["events"] = event;
 }
