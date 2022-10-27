@@ -1,15 +1,45 @@
-import 'dart:io';
+import 'package:flutter/material.dart';
+import 'model.dart';
 
 void main() {
-  print("Koliko bodova ima ispit?");
+  runApp(const MyApp());
+}
 
-  String? brojBodova = stdin.readLineSync();
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-  var nBrojBodova = int.parse(brojBodova!);
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      title: 'Welcome to Flutter',
+      home: Scaffold(
+        body: Center(
+          child: InputPoints(),
+        ),
+      ),
+    );
+  }
+}
 
-  var polovica = nBrojBodova / 2;
+class InputPoints extends StatelessWidget {
+  const InputPoints({
+    Key? key,
+  }) : super(key: key);
 
-  var interval = polovica / 4;
+  @override
+  Widget build(BuildContext context) {
+    Exam exam;
 
-  print(interval);
+    return Container(
+      width: 100,
+      child: TextField(
+        textAlign: TextAlign.center,
+        decoration: const InputDecoration(border: OutlineInputBorder()),
+        onSubmitted: ((value) {
+          (exam = Exam(totalPoints: int.parse(value)));
+          print(exam.getGrades(int.parse(value)));
+        }),
+      ),
+    );
+  }
 }
