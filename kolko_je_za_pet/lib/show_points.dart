@@ -9,14 +9,25 @@ class ShowPoints extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final points = ref.read(examProvider);
 
-    return Column(
-      children: [
-        Text(points[0].toString()),
-        Text(points[1].toString()),
-        Text(points[2].toString()),
-        Text(points[3].toString()),
-        Text(points[4].toString()),
-      ],
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Ukupan broj bodova: ${points[0].first}",
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+              Text("Odličan: ${points[0].first} - ${points[0].last}"),
+              Text("Vrlo dobar: ${points[1].first} - ${points[1].last}"),
+              Text("Dobar: ${points[2].first} - ${points[2].last}"),
+              Text("Dovoljan: ${points[3].first} - ${points[3].last}"),
+              Text("Nedovoljan: ${points[4].first} - ${points[4].last}"),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

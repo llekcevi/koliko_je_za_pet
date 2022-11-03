@@ -12,7 +12,6 @@ class KolkoJeZaPet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: 'Welcome to Flutter',
       home: Scaffold(
         body: Center(
           child: InputPoints(),
