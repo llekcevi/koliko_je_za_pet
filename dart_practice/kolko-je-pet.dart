@@ -6,14 +6,17 @@ void main() {
   String? brojBodova = '25';
 
   var nBrojBodova = int.parse(brojBodova!);
-  var polovica = nBrojBodova%2 == 0 ? (nBrojBodova / 2).round()+1 :(nBrojBodova / 2).round() ;
+  var polovica = nBrojBodova % 2 == 0
+      ? (nBrojBodova / 2).round() + 1
+      : (nBrojBodova / 2).round();
 
   var lista = List.generate((polovica), (index) => nBrojBodova - index);
 
   print(lista);
 
-  var prvaPolovica = lista.sublist(0, (polovica / 2).round()-(polovica%2));
-  var drugaPolovica = lista.sublist((polovica / 2).round()-(polovica%2), polovica);
+  var prvaPolovica = lista.sublist(0, (polovica / 2).round() - (polovica % 2));
+  var drugaPolovica =
+      lista.sublist((polovica / 2).round() - (polovica % 2), polovica);
 
   print(prvaPolovica);
   print(drugaPolovica);

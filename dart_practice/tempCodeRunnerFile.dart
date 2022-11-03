@@ -1,1 +1,0 @@
-polovica / 2
