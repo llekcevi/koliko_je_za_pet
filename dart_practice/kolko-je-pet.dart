@@ -3,7 +3,7 @@ import 'dart:io';
 void main() {
   print("Koliko bodova ima ispit?");
 
-  String? brojBodova = '25';
+  String? brojBodova = stdin.readLineSync();
 
   var nBrojBodova = int.parse(brojBodova!);
   var polovica = nBrojBodova % 2 == 0
