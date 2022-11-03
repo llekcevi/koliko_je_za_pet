@@ -5,7 +5,7 @@ class Exam {
 
   Exam({required this.totalPoints, this.classNumber, this.label});
 
-  getGrades(int totalPoints) {
+  List getGrades(int totalPoints) {
     int halfPoint = totalPoints % 2 == 0
         ? (totalPoints / 2).round() + 1
         : (totalPoints / 2).round();

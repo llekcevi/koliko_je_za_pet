@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'model.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'input_points.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: KolkoJeZaPet()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class KolkoJeZaPet extends StatelessWidget {
+  const KolkoJeZaPet({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,29 +17,6 @@ class MyApp extends StatelessWidget {
         body: Center(
           child: InputPoints(),
         ),
-      ),
-    );
-  }
-}
-
-class InputPoints extends StatelessWidget {
-  const InputPoints({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    Exam exam;
-
-    return Container(
-      width: 100,
-      child: TextField(
-        textAlign: TextAlign.center,
-        decoration: const InputDecoration(border: OutlineInputBorder()),
-        onSubmitted: ((value) {
-          (exam = Exam(totalPoints: int.parse(value)));
-          print(exam.getGrades(int.parse(value)));
-        }),
       ),
     );
   }
