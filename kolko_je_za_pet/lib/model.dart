@@ -6,14 +6,17 @@ class Exam {
   Exam({required this.totalPoints, this.classNumber, this.label});
 
   getGrades(int totalPoints) {
-    int halfPoints = (totalPoints / 2).round();
+    int halfPoint = totalPoints % 2 == 0
+        ? (totalPoints / 2).round() + 1
+        : (totalPoints / 2).round();
 
     List positiveGrade =
-        List.generate(halfPoints, (index) => totalPoints - index);
+        List.generate(halfPoint, (index) => totalPoints - index);
 
-    List betterGrades = positiveGrade.sublist(0, (halfPoints / 2).round());
-    List worseGrades =
-        positiveGrade.sublist((halfPoints / 2).round(), halfPoints);
+    List betterGrades =
+        positiveGrade.sublist(0, (halfPoint / 2).round() - (halfPoint % 2));
+    List worseGrades = positiveGrade.sublist(
+        (halfPoint / 2).round() - (halfPoint % 2), halfPoint);
 
     List points5 = betterGrades.sublist(
         0, ((betterGrades.length / 2).round() - betterGrades.length % 2));
@@ -28,7 +31,10 @@ class Exam {
     List points2 = worseGrades.sublist(
         (worseGrades.length / 2).round(), worseGrades.length);
 
-    return [points5, points4, points3, points2];
+    List points1 = List.generate((totalPoints / 2).round() - 1,
+        (index) => ((totalPoints / 2).round() - 1) - index);
+
+    return [points5, points4, points3, points2, points1];
   }
 
   @override
