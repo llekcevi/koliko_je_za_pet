@@ -1,9 +1,9 @@
 class Exam {
   String? label;
-  late int totalPoints;
-  String? classNumber;
+  int? totalPoints;
+  int? classNumber;
 
-  Exam({required this.totalPoints, this.classNumber, this.label});
+  Exam({this.totalPoints, this.classNumber, this.label});
 
   List<List<int>> getGrades(int totalPoints) {
     int halfPoint = totalPoints % 2 == 0
@@ -40,6 +40,6 @@ class Exam {
 
   @override
   String toString() {
-    return totalPoints.toString();
+    return "Naziv: $label | Ukupan broj bodova: $totalPoints | Razred: $classNumber.";
   }
 }
