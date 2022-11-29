@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "596330969866",
+    "project_id": "broj-bodova",
+    "storage_bucket": "broj-bodova.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596330969866:android:8721c792f84f866213d8f3",
+        "android_client_info": {
+          "package_name": "com.example.kolko_je_za_pet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "596330969866-ocumj6koo7qkaq39rtisipv520f10rnb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBf6ZGhCyjJ0Dh35yfnH2UokZ6-fMm7m4w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "596330969866-ocumj6koo7qkaq39rtisipv520f10rnb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "596330969866-tp1jt16gtq6ksvvak1u2pve4ftt20gue.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.kolkoJeZaPet"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
