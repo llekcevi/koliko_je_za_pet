@@ -1,9 +1,9 @@
 class Exam {
-  String? label;
-  int? totalPoints;
-  int? classNumber;
+  String? naziv;
+  int? ukupanBrojBodova;
+  int? razred;
 
-  Exam({this.totalPoints, this.classNumber, this.label});
+  Exam({this.ukupanBrojBodova, this.razred, this.naziv});
 
   List<List<int>> getGrades(int totalPoints) {
     int halfPoint = totalPoints % 2 == 0
@@ -38,8 +38,16 @@ class Exam {
     return [points5, points4, points3, points2, points1];
   }
 
+  Map<String, dynamic> examToJson() {
+    return {
+      "naziv": naziv,
+      "ukupanBrojBodova": ukupanBrojBodova,
+      "razred": razred
+    };
+  }
+
   @override
   String toString() {
-    return "Naziv: $label | Ukupan broj bodova: $totalPoints | Razred: $classNumber.";
+    return "Naziv: $naziv | Ukupan broj bodova: $ukupanBrojBodova | Razred: $razred.";
   }
 }
