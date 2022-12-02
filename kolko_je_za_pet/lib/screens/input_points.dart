@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../model.dart';
-import '../provider.dart';
 import 'show_points.dart';
 
 class InputPoints extends ConsumerWidget {
@@ -20,7 +19,7 @@ class InputPoints extends ConsumerWidget {
         textAlign: TextAlign.center,
         decoration: const InputDecoration(border: OutlineInputBorder()),
         onSubmitted: ((value) {
-          examObject.totalPoints = int.parse(value);
+          examObject.ukupanBrojBodova = int.parse(value);
           print(examObject);
           Navigator.push(
               context,

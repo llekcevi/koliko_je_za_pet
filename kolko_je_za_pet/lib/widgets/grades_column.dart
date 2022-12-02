@@ -11,7 +11,7 @@ class GradesColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final points = exam.totalPoints;
+    final points = exam.ukupanBrojBodova;
     final grades = exam.getGrades(points!);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
