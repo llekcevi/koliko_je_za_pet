@@ -38,13 +38,18 @@ class Exam {
     return [points5, points4, points3, points2, points1];
   }
 
-  Map<String, dynamic> examToJson() {
+  Map<String, dynamic> toJson() {
     return {
       "naziv": naziv,
       "ukupanBrojBodova": ukupanBrojBodova,
       "razred": razred
     };
   }
+
+  static Exam fromJson(Map<String, dynamic> json) => Exam(
+      naziv: json["naziv"],
+      ukupanBrojBodova: json["ukupanBrojBodova"],
+      razred: json["razred"]);
 
   @override
   String toString() {
