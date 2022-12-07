@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kolko_je_za_pet/model.dart';
 
 class GradesColumn extends StatelessWidget {
-  GradesColumn({
+  const GradesColumn({
     Key? key,
     required this.exam,
   }) : super(key: key);
