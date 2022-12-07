@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'screens/input_points.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'screens/home_page.dart';
+import '../widgets/input_points_alert_dialog.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,20 +12,9 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  runApp(const ProviderScope(child: KolkoJeZaPet()));
-}
-
-class KolkoJeZaPet extends StatelessWidget {
-  const KolkoJeZaPet({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: InputPoints(),
-        ),
-      ),
-    );
-  }
+  runApp(const ProviderScope(
+    child: MaterialApp(
+      home: HomePage(),
+    ),
+  ));
 }
