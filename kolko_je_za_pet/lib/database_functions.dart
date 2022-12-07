@@ -11,5 +11,11 @@ Future writeExam(Exam exam) async {
   ispiti.doc(documentName).set(exam.toJson());
 }
 
-Stream<List<Exam>> readExams() => ispiti.snapshots().map((snapshot) =>
-    snapshot.docs.map((doc) => Exam.fromJson(doc.data())).toList());
+Future<List<Exam>> readExams() =>
+    ispiti.orderBy("razred", descending: false).get().then((snapshot) =>
+        snapshot.docs.map((doc) => Exam.fromJson(doc.data())).toList());
+
+Future<List<Exam>> filterRazred(int razred) => ispiti
+    .where("razred", isEqualTo: razred)
+    .get()
+    .then((value) => value.docs.map((e) => Exam.fromJson(e.data())).toList());
