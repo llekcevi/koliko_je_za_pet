@@ -20,6 +20,7 @@ class _SaveExamState extends ConsumerState<SaveExam> {
     final exam = widget.exam;
     final nazivController = ref.read(nazivProvider);
     final razredController = ref.read(razredProvider);
+    final bodoviController = ref.read(bodoviProvider);
 
     return MaterialApp(
         home: Scaffold(
@@ -59,15 +60,20 @@ class _SaveExamState extends ConsumerState<SaveExam> {
                     exam.naziv = nazivController.text;
                     exam.razred = int.parse(razredController.text);
                     writeExam(exam);
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: ((context) => HomePage())));
+                    clearProviders(
+                        nazivController, razredController, bodoviController);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) => const HomePage())));
                   },
                   child: const Text("Završi")),
               ElevatedButton(
                   onPressed: () {
-                    //getAllExams();
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: ((context) => HomePage())));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) => const HomePage())));
                   },
                   child: const Text("ispiši ispite"))
             ]),
