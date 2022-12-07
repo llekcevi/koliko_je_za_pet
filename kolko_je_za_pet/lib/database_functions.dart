@@ -4,17 +4,12 @@ import 'model.dart';
 final db = FirebaseFirestore.instance;
 final ispiti = db.collection("ispiti");
 
-Future getAllExams() async {
-  await ispiti.get().then((event) {
-    for (var doc in event.docs) {
-      return doc.data();
-    }
-  });
-}
-
 Future writeExam(Exam exam) async {
   final documentName =
       "${exam.naziv.toString().replaceAll(" ", "")}${exam.razred}";
 
-  ispiti.doc(documentName).set(exam.examToJson());
+  ispiti.doc(documentName).set(exam.toJson());
 }
+
+Stream<List<Exam>> readExams() => ispiti.snapshots().map((snapshot) =>
+    snapshot.docs.map((doc) => Exam.fromJson(doc.data())).toList());
