@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:kolko_je_za_pet/database_functions.dart';
 import 'package:kolko_je_za_pet/model.dart';
+import 'package:kolko_je_za_pet/widgets/grades_column.dart';
 
 class ExamsList extends StatelessWidget {
-  const ExamsList({
-    Key? key,
-  }) : super(key: key);
-
+  const ExamsList({Key? key, required this.future}) : super(key: key);
+  final Future future;
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<List<Exam>>(
-      stream: readExams(),
+    var future = readExams();
+    return FutureBuilder<List<Exam>>(
+      future: future,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return const Text("something went wrong");
@@ -30,5 +30,8 @@ class ExamsList extends StatelessWidget {
   }
 }
 
-Widget buildExam(Exam exam) => ListTile(
-    title: Text("${exam.naziv}"), subtitle: Text(exam.razred.toString()));
+Widget buildExam(Exam exam) => ExpansionTile(
+      title: Text("${exam.naziv}"),
+      subtitle: Text(exam.razred.toString()),
+      children: [GradesColumn(exam: exam)],
+    );
