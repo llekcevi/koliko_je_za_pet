@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kolko_je_za_pet/database_functions.dart';
 import 'package:kolko_je_za_pet/widgets/filter_exams.dart';
+import 'package:kolko_je_za_pet/widgets/razred_tabs.dart';
 import 'exams_list.dart';
 import '../widgets/input_points_alert_dialog.dart';
 
@@ -16,6 +17,7 @@ class HomePage extends StatelessWidget {
           child: Center(
               child: Column(
         children: [
+          Container(width: double.infinity, height: 50, child: RazredTabs()),
           Expanded(child: ExamsList(future: readExams())),
           FloatingActionButton.extended(
               icon: const Icon(Icons.add),
