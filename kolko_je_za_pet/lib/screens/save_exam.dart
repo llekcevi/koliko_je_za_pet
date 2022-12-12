@@ -23,63 +23,69 @@ class _SaveExamState extends ConsumerState<SaveExam> {
     final bodoviController = ref.read(bodoviProvider);
 
     return MaterialApp(
-        home: Scaffold(
-      body: SafeArea(
-        child: Container(
-          padding: const EdgeInsets.all(10),
-          child: Center(
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              //zamijeniti column custom widgetom
-              Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                const Text("Naziv ispita: "),
-                TextField(
-                  controller: nazivController,
-                  keyboardType: TextInputType.text,
-                  textAlign: TextAlign.center,
-                  decoration:
-                      const InputDecoration(border: OutlineInputBorder()),
-                ),
-              ]),
-              Column(
+      home: Scaffold(
+        body: SafeArea(
+          child: Container(
+            padding: const EdgeInsets.all(10),
+            child: Center(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text("Razred: "),
-                  TextField(
-                    controller: razredController,
-                    keyboardType: TextInputType.number,
-                    textAlign: TextAlign.center,
-                    decoration:
-                        const InputDecoration(border: OutlineInputBorder()),
-                  )
+                  //zamijeniti column custom widgetom
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text("Naziv ispita: "),
+                      TextField(
+                        controller: nazivController,
+                        keyboardType: TextInputType.text,
+                        textAlign: TextAlign.center,
+                        decoration:
+                            const InputDecoration(border: OutlineInputBorder()),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text("Razred: "),
+                      TextField(
+                        controller: razredController,
+                        keyboardType: TextInputType.number,
+                        textAlign: TextAlign.center,
+                        decoration:
+                            const InputDecoration(border: OutlineInputBorder()),
+                      )
+                    ],
+                  ),
+                  GradesColumn(exam: exam),
+                  ElevatedButton(
+                      onPressed: () {
+                        exam.naziv = nazivController.text;
+                        exam.razred = int.parse(razredController.text);
+                        writeExam(exam);
+                        clearTextEditingProviders(nazivController,
+                            razredController, bodoviController);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => const HomePage())));
+                      },
+                      child: const Text("Završi")),
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => const HomePage())));
+                      },
+                      child: const Text("ispiši ispite"))
                 ],
               ),
-              GradesColumn(exam: exam),
-              ElevatedButton(
-                  onPressed: () {
-                    exam.naziv = nazivController.text;
-                    exam.razred = int.parse(razredController.text);
-                    writeExam(exam);
-                    clearProviders(
-                        nazivController, razredController, bodoviController);
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: ((context) => const HomePage())));
-                  },
-                  child: const Text("Završi")),
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: ((context) => const HomePage())));
-                  },
-                  child: const Text("ispiši ispite"))
-            ]),
+            ),
           ),
         ),
       ),
-    ));
+    );
   }
 }
