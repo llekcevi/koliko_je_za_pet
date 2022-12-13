@@ -16,18 +16,9 @@ class InputPoints extends ConsumerWidget {
       contentPadding: const EdgeInsets.symmetric(
         horizontal: 100,
       ),
-      content: TextField(
-        textAlign: TextAlign.center,
-        keyboardType: TextInputType.number,
-        controller: bodoviController,
-      ),
+      content: InputPointsTextField(bodoviController: bodoviController),
       actions: [
-        TextButton(
-            onPressed: (() {
-              bodoviController.clear();
-              Navigator.pop(context);
-            }),
-            child: const Text("Odustani")),
+        CancelTextButton(bodoviController: bodoviController),
         TextButton(
             onPressed: (() {
               final exam =
@@ -46,5 +37,44 @@ class InputPoints extends ConsumerWidget {
             builder: ((context) => SaveExam(
                   exam: exam,
                 ))));
+  }
+}
+
+class CancelTextButton extends StatelessWidget {
+  const CancelTextButton({
+    Key? key,
+    required this.bodoviController,
+  }) : super(key: key);
+
+  final TextEditingController bodoviController;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+        onPressed: (() {
+          bodoviController.clear();
+          Navigator.pop(context);
+        }),
+        child: const Text(
+            style: TextStyle(color: Color.fromARGB(180, 244, 67, 54)),
+            "Odustani"));
+  }
+}
+
+class InputPointsTextField extends StatelessWidget {
+  const InputPointsTextField({
+    Key? key,
+    required this.bodoviController,
+  }) : super(key: key);
+
+  final TextEditingController bodoviController;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      textAlign: TextAlign.center,
+      keyboardType: TextInputType.number,
+      controller: bodoviController,
+    );
   }
 }

@@ -12,21 +12,22 @@ class FilterExams extends ConsumerWidget {
     final razred = ref.watch(razredFilterProvider);
 
     return FutureBuilder(
-        future: filterRazred(razred),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return const Text("something went wrong");
-          } else if (snapshot.hasData) {
-            final exams = snapshot.data!;
+      future: filterRazred(razred),
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return const Text("something went wrong");
+        } else if (snapshot.hasData) {
+          final exams = snapshot.data!;
 
-            return ListView(
-              children: exams.map(buildExam).toList(),
-            );
-          } else {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        });
+          return ListView(
+            children: exams.map(buildExam).toList(),
+          );
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
+    );
   }
 }
