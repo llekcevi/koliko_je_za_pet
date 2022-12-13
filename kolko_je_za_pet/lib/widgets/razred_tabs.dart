@@ -14,6 +14,7 @@ class RazredTabs extends ConsumerWidget {
     var future = readExams();
     final selectedRazred = ref.watch(razredFilterProvider);
     final razredProvider = ref.read(razredFilterProvider.notifier);
+
     return FutureBuilder<List<Exam>>(
       future: future,
       builder: (context, snapshot) {
@@ -30,13 +31,10 @@ class RazredTabs extends ConsumerWidget {
           return ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: razredi.length,
-            itemBuilder: (context, index) => Container(
+            itemBuilder: (context, index) => SizedBox(
               width: MediaQuery.of(context).size.width / 4,
               child: ListTile(
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30))),
+                shape: listTileBorderRadius(),
                 selected: selectedRazred == razredi[index] ? true : false,
                 tileColor: Theme.of(context).highlightColor,
                 selectedTileColor: Colors.white,
@@ -44,7 +42,9 @@ class RazredTabs extends ConsumerWidget {
                   razredProvider.chooseRazredFilter(razredi[index]);
                 },
                 title: Text(
-                    textAlign: TextAlign.center, razredi[index].toString()),
+                  textAlign: TextAlign.center,
+                  razredi[index].toString(),
+                ),
               ),
             ),
           );
@@ -55,5 +55,11 @@ class RazredTabs extends ConsumerWidget {
         }
       },
     );
+  }
+
+  RoundedRectangleBorder listTileBorderRadius() {
+    return const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30), topRight: Radius.circular(30)));
   }
 }
