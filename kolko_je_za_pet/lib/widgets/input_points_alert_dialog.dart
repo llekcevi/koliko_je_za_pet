@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kolko_je_za_pet/provider.dart';
-import 'package:kolko_je_za_pet/screens/save_exam.dart';
-import 'package:kolko_je_za_pet/model.dart';
+import 'package:kolko_je_za_pet/widgets/continue_saving_exam_text_button.dart';
+import 'package:kolko_je_za_pet/widgets/text_fields/input_points_text_field.dart';
+import 'package:kolko_je_za_pet/widgets/buttons/cancel_alert_dialog_text_button.dart';
 
 class InputPoints extends ConsumerWidget {
   const InputPoints({super.key});
@@ -18,63 +19,9 @@ class InputPoints extends ConsumerWidget {
       ),
       content: InputPointsTextField(bodoviController: bodoviController),
       actions: [
-        CancelTextButton(bodoviController: bodoviController),
-        TextButton(
-            onPressed: (() {
-              final exam =
-                  Exam(ukupanBrojBodova: int.parse(bodoviController.text));
-              continueToSave(context, exam);
-            }),
-            child: const Text("Nastavi")),
+        CancelAlertDialogTextButton(bodoviController: bodoviController),
+        ContinueSavingExamTextButton(bodoviController: bodoviController),
       ],
-    );
-  }
-
-  Future<dynamic> continueToSave(BuildContext context, Exam exam) {
-    return Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: ((context) => SaveExam(
-                  exam: exam,
-                ))));
-  }
-}
-
-class CancelTextButton extends StatelessWidget {
-  const CancelTextButton({
-    Key? key,
-    required this.bodoviController,
-  }) : super(key: key);
-
-  final TextEditingController bodoviController;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-        onPressed: (() {
-          bodoviController.clear();
-          Navigator.pop(context);
-        }),
-        child: const Text(
-            style: TextStyle(color: Color.fromARGB(180, 244, 67, 54)),
-            "Odustani"));
-  }
-}
-
-class InputPointsTextField extends StatelessWidget {
-  const InputPointsTextField({
-    Key? key,
-    required this.bodoviController,
-  }) : super(key: key);
-
-  final TextEditingController bodoviController;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      textAlign: TextAlign.center,
-      keyboardType: TextInputType.number,
-      controller: bodoviController,
     );
   }
 }

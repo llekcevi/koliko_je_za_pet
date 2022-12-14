@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kolko_je_za_pet/widgets/filter_exams.dart';
+import 'package:kolko_je_za_pet/widgets/exams_by_razred.dart';
 import 'package:kolko_je_za_pet/widgets/razred_tabs.dart';
-import '../widgets/input_points_alert_dialog.dart';
+import 'package:kolko_je_za_pet/widgets/buttons/add_new_exam_floating_action_button.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -14,21 +14,10 @@ class HomePage extends StatelessWidget {
         body: SafeArea(
           child: Center(
             child: Column(
-              children: [
-                const SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                  child: RazredTabs(),
-                ),
-                const Expanded(
-                  child: FilterExams(),
-                ),
-                FloatingActionButton.extended(
-                    icon: const Icon(Icons.add),
-                    label: const Text("Dodaj novi ispit"),
-                    onPressed: () => showDialog(
-                        context: context,
-                        builder: (BuildContext context) => const InputPoints()))
+              children: const [
+                RazredTabs(),
+                ExamsByRazred(),
+                AddNewExamFloatingActionButton()
               ],
             ),
           ),

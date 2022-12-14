@@ -3,8 +3,8 @@ import 'package:kolko_je_za_pet/database_functions.dart';
 import 'package:kolko_je_za_pet/model.dart';
 import 'package:kolko_je_za_pet/widgets/grades_column.dart';
 
-class ExamsList extends StatelessWidget {
-  const ExamsList({Key? key, required this.future}) : super(key: key);
+class AllExamsList extends StatelessWidget {
+  const AllExamsList({Key? key, required this.future}) : super(key: key);
   final Future future;
   @override
   Widget build(BuildContext context) {
