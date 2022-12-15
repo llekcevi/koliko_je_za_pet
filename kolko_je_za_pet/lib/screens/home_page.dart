@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kolko_je_za_pet/widgets/exams_by_razred.dart';
 import 'package:kolko_je_za_pet/widgets/razred_tabs.dart';
 import 'package:kolko_je_za_pet/widgets/buttons/add_new_exam_floating_action_button.dart';
+import 'package:kolko_je_za_pet/auth/authetication.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -10,7 +11,16 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          actions: [
+            IconButton(
+                onPressed: (() => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const Authetication())))),
+                icon: Icon(Icons.person))
+          ],
+        ),
         body: SafeArea(
           child: Center(
             child: Column(

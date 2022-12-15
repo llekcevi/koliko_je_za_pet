@@ -24,7 +24,7 @@ class SaveExamElevatedButton extends StatelessWidget {
         onPressed: () {
           exam.naziv = nazivController.text;
           exam.razred = int.parse(razredController.text);
-          writeExam(exam);
+          writeExamUser(exam);
           clearTextEditingProviders(
               nazivController, razredController, bodoviController);
           Navigator.push(context,
