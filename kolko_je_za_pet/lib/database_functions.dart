@@ -5,9 +5,8 @@ import 'provider.dart';
 final db = FirebaseFirestore.instance;
 final ispiti = db.collection("ispiti");
 
-Future writeExamUser(Exam exam) async {
+Future writeExamUser(Exam exam, String userID) async {
   final users = db.collection("users");
-  final userID = GoogleSignInState().user.id;
   final usersExams = users.doc(userID).collection("ispiti");
 
   final documentName =

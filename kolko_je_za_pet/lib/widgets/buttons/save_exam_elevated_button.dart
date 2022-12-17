@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kolko_je_za_pet/model.dart';
 import 'package:kolko_je_za_pet/provider.dart';
 import 'package:kolko_je_za_pet/database_functions.dart';
 import 'package:kolko_je_za_pet/screens/home_page.dart';
 
-class SaveExamElevatedButton extends StatelessWidget {
+class SaveExamElevatedButton extends ConsumerWidget {
   const SaveExamElevatedButton({
     Key? key,
     required this.exam,
@@ -19,12 +20,14 @@ class SaveExamElevatedButton extends StatelessWidget {
   final TextEditingController bodoviController;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final userId = ref.read(googleSignInProvider).user.id;
+
     return ElevatedButton(
         onPressed: () {
           exam.naziv = nazivController.text;
           exam.razred = int.parse(razredController.text);
-          writeExamUser(exam);
+          writeExamUser(exam, userId);
           clearTextEditingProviders(
               nazivController, razredController, bodoviController);
           Navigator.push(context,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kolko_je_za_pet/provider.dart';
 
 class Authetication extends ConsumerWidget {
@@ -8,7 +9,7 @@ class Authetication extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final google = ref.read(googleSignInProvider);
-    final user = google.user;
+    GoogleSignInAccount? user = google.user;
 
     return Container(
       child: Column(
