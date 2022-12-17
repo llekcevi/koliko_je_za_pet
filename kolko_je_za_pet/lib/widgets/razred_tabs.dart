@@ -11,7 +11,7 @@ class RazredTabs extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var future = readExams();
+    var future = readExamsUser(ref.read(googleSignInProvider).user.id);
     final selectedRazred = ref.watch(razredFilterProvider);
     final razredProvider = ref.read(razredFilterProvider.notifier);
 
@@ -31,26 +31,30 @@ class RazredTabs extends ConsumerWidget {
                   ? razredi.add(exams[exam].razred)
                   : null;
             }
-            return ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: razredi.length,
-              itemBuilder: (context, index) => SizedBox(
-                width: MediaQuery.of(context).size.width / 4,
-                child: ListTile(
-                  shape: listTileBorderRadius(),
-                  selected: selectedRazred == razredi[index] ? true : false,
-                  tileColor: Theme.of(context).highlightColor,
-                  selectedTileColor: Colors.white,
-                  onTap: () {
-                    razredProvider.chooseRazredFilter(razredi[index]);
-                  },
-                  title: Text(
-                    textAlign: TextAlign.center,
-                    razredi[index].toString(),
+            if (razredi.isNotEmpty && razredi.length > 1) {
+              return ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: razredi.length,
+                itemBuilder: (context, index) => SizedBox(
+                  width: MediaQuery.of(context).size.width / 4,
+                  child: ListTile(
+                    shape: listTileBorderRadius(),
+                    selected: selectedRazred == razredi[index] ? true : false,
+                    tileColor: Theme.of(context).highlightColor,
+                    selectedTileColor: Colors.white,
+                    onTap: () {
+                      razredProvider.chooseRazredFilter(razredi[index]);
+                    },
+                    title: Text(
+                      textAlign: TextAlign.center,
+                      razredi[index].toString(),
+                    ),
                   ),
                 ),
-              ),
-            );
+              );
+            } else {
+              return Container();
+            }
           } else {
             return const Center(
               child: CircularProgressIndicator(),

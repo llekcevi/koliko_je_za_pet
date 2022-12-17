@@ -10,10 +10,11 @@ class ExamsByRazred extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final razred = ref.watch(razredFilterProvider);
+    final userId = ref.read(googleSignInProvider).user.id;
 
     return Expanded(
       child: FutureBuilder(
-        future: sortByRazred(razred),
+        future: sortByRazredUser(razred, userId),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return const Text("something went wrong");
