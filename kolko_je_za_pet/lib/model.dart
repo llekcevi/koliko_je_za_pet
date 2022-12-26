@@ -1,6 +1,14 @@
+import 'package:hive/hive.dart';
+
+part 'model.g.dart';
+
+@HiveType(typeId: 0)
 class Exam {
+  @HiveField(0)
   String? naziv;
+  @HiveField(1)
   int? ukupanBrojBodova;
+  @HiveField(2)
   int? razred;
 
   Exam({this.ukupanBrojBodova, this.razred, this.naziv});

@@ -15,6 +15,7 @@ class NazivTextField extends StatelessWidget {
       children: [
         const Text("Naziv ispita: "),
         TextField(
+          autocorrect: false,
           controller: nazivController,
           keyboardType: TextInputType.text,
           textAlign: TextAlign.center,

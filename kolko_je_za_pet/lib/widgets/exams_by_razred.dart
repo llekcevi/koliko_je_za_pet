@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kolko_je_za_pet/database_functions.dart';
+import 'package:kolko_je_za_pet/firestore_functions.dart';
 import 'package:kolko_je_za_pet/widgets/all_exams_list.dart';
 import 'package:kolko_je_za_pet/provider.dart';
 

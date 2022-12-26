@@ -9,13 +9,13 @@ class Authetication extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final google = ref.read(googleSignInProvider);
-    GoogleSignInAccount? user = google.user;
+    //GoogleSignInAccount? user = google.user;
 
     return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(user.displayName!),
+          //Text(user.displayName!),
           ElevatedButton(
             child: Text("google login"),
             onPressed: () => google.googleLogin(),

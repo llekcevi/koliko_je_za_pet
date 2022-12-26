@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kolko_je_za_pet/database_functions.dart';
+import 'package:kolko_je_za_pet/firestore_functions.dart';
 import 'package:kolko_je_za_pet/model.dart';
 import 'package:kolko_je_za_pet/widgets/grades_column.dart';
 
