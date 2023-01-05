@@ -25,12 +25,12 @@ void main() async {
         future: Hive.openBox("exams"),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return Scaffold();
             print(snapshot.error.toString());
+            return Scaffold();
           } else if (snapshot.hasData) {
             return HomePage();
           } else {
-            return Scaffold();
+            return CircularProgressIndicator();
           }
         },
       ),
