@@ -54,6 +54,8 @@ class GoogleSignInState extends ChangeNotifier {
 
     await FirebaseAuth.instance.signInWithCredential(credential);
   }
+
+  final currentUser = FirebaseAuth.instance.currentUser;
 }
 
 final googleSignInProvider =
