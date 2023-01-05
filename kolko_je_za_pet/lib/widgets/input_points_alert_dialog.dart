@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kolko_je_za_pet/provider.dart';
-import 'package:kolko_je_za_pet/widgets/continue_saving_exam_text_button.dart';
 import 'package:kolko_je_za_pet/widgets/text_fields/input_points_text_field.dart';
 import 'package:kolko_je_za_pet/widgets/buttons/cancel_alert_dialog_text_button.dart';
+
+import 'buttons/continue_saving_exam_text_button.dart';
 
 class InputPoints extends ConsumerWidget {
   const InputPoints({super.key});
