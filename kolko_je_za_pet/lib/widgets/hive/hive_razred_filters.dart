@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:kolko_je_za_pet/provider.dart';
+import 'package:kolko_je_za_pet/style.dart';
 
-//izdvojiti funkciju za border radius i zasebni style file
 class HiveRazredFilters extends ConsumerWidget {
   const HiveRazredFilters({super.key});
 
@@ -49,11 +49,5 @@ class HiveRazredFilters extends ConsumerWidget {
     }
     razredi.sort();
     return razredi;
-  }
-
-  RoundedRectangleBorder listTileBorderRadius() {
-    return const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30), topRight: Radius.circular(30)));
   }
 }
