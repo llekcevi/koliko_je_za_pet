@@ -14,18 +14,21 @@ class GradesColumn extends StatelessWidget {
     final points = exam.ukupanBrojBodova;
     final grades = exam.getGrades(points!);
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
           "Ukupan broj bodova: ${grades[0].first}",
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
-        const SizedBox(height: 10),
+        const Divider(
+          indent: 100,
+          endIndent: 100,
+        ),
         Text("Odličan: ${grades[0].first} - ${grades[0].last}"),
         Text("Vrlo dobar: ${grades[1].first} - ${grades[1].last}"),
         Text("Dobar: ${grades[2].first} - ${grades[2].last}"),
         Text("Dovoljan: ${grades[3].first} - ${grades[3].last}"),
         Text("Nedovoljan: ${grades[4].first} - ${grades[4].last}"),
+        const SizedBox(height: 10),
       ],
     );
   }

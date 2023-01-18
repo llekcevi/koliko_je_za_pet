@@ -7,7 +7,6 @@ import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'screens/home_page.dart';
 
-//razmisliti o loading screenu? Možda i ne treba jer je circual progress ok i razumljiv
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -26,12 +25,15 @@ void main() async {
         future: Hive.openBox("exams"),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            print(snapshot.error.toString());
-            return Scaffold();
+            return Scaffold(
+              body: Center(
+                child: Text(snapshot.error.toString()),
+              ),
+            );
           } else if (snapshot.hasData) {
-            return HomePage();
+            return const HomePage();
           } else {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           }
         },
       ),
