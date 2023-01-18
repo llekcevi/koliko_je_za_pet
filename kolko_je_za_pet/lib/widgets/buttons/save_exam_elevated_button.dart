@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kolko_je_za_pet/model.dart';
 import 'package:kolko_je_za_pet/provider.dart';
 import 'package:kolko_je_za_pet/hive_functions.dart';
-import 'package:kolko_je_za_pet/firestore_functions.dart';
 import 'package:kolko_je_za_pet/screens/home_page.dart';
 
 class SaveExamElevatedButton extends ConsumerWidget {
@@ -22,14 +21,11 @@ class SaveExamElevatedButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    //final userId = ref.read(googleSignInProvider).user.id;
-
     return ElevatedButton(
         onPressed: () {
           exam.naziv = nazivController.text;
           exam.razred = int.parse(razredController.text);
           addExamToBox(exam);
-          //writeExamUser(exam, userId);
           clearTextEditingProviders(
               nazivController, razredController, bodoviController);
           Navigator.push(context,

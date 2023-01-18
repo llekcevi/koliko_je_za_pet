@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:kolko_je_za_pet/provider.dart';
 
+//izdvojiti funkciju koja napravi listu unique razreda
+//izdvojiti funkciju za border radius i zasebni style file
 class HiveRazredFilters extends ConsumerWidget {
   const HiveRazredFilters({super.key});
 

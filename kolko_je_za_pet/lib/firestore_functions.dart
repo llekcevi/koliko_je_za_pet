@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:kolko_je_za_pet/hive_functions.dart';
 import 'model.dart';
 import 'package:hive/hive.dart';
 
@@ -7,7 +6,11 @@ final db = FirebaseFirestore.instance;
 final ispiti = db.collection("ispiti");
 final users = db.collection("users");
 
+// razmisliti o svim slučajevima korištenja funkcije sync exams
+// - što ako se korisnik prijavljuje u svoj račun na novom mobitelu, što ako se prijavljuje na tuđem
+// -
 Future syncExams(String userId, Box hiveBox) async {
+  //prvo upload lokalnih na firebase
   final local = hiveBox.values;
 
   for (Exam exam in local) {
@@ -16,29 +19,32 @@ Future syncExams(String userId, Box hiveBox) async {
 
     users.doc(userId).collection("ispiti").doc(documentName).set(exam.toJson());
   }
-
+  // zatim download firebase u lokalnu bazu ako ne postoje
+  // download trenutno uspoređuje ispite prema nazivu, a trebalo bi ih na neki drugi način
+  // usporediti. Trenutno pravopisnu provjeru u 8. i 5. razredu doživljava kao isti ispit
+  // i neće ga skinuti
   final cloud = users
       .doc(userId)
       .collection("ispiti")
       .get()
       .then((value) => value.docs.map((e) => Exam.fromJson(e.data())).toList());
 
-  cloud.then((listOfFirestoreExams) {
-    for (Exam firestoreExam in listOfFirestoreExams) {
-      final hiveList = hiveBox.values.toList();
-      final duplicateExams = hiveList
-          .where((hiveExam) => hiveExam.naziv == firestoreExam.naziv)
-          .toList();
-      if (duplicateExams.isEmpty) {
-        hiveBox.add(firestoreExam);
-        print("added ${firestoreExam.toString()}");
-      } else {
-        print("not added");
+  cloud.then(
+    (listOfFirestoreExams) {
+      for (Exam firestoreExam in listOfFirestoreExams) {
+        final hiveList = hiveBox.values.toList();
+        final duplicateExams = hiveList
+            .where((hiveExam) => hiveExam.naziv == firestoreExam.naziv)
+            .toList();
+        if (duplicateExams.isEmpty) {
+          hiveBox.add(firestoreExam);
+          print("added ${firestoreExam.toString()}");
+        } else {
+          print("not added");
+        }
       }
-    }
-
-    //print(hiveBox.values.toList());
-  });
+    },
+  );
 }
 
 Future writeExamUser(Exam exam, String userID) async {

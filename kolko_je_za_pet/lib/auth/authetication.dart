@@ -5,6 +5,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kolko_je_za_pet/provider.dart';
 import 'package:kolko_je_za_pet/firestore_functions.dart';
 
+// urediti i razmisliti o dizajnu - možda samo kao neki drawer ili neki drugi
+// widget manji od cijelog novog zaslona.
+
+// prikazati ime i prezime ako je login
+
+// urediti hasError slučaj
+
 class Authetication extends ConsumerWidget {
   const Authetication({super.key});
 

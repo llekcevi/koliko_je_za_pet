@@ -9,7 +9,7 @@ import '../widgets/hive/hive_razred_filters.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
+//extract custom appBar widget
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -34,7 +34,6 @@ class HomePage extends StatelessWidget {
           child: Center(
             child: Column(
               children: const [
-                //ExamsByRazred(),
                 HiveRazredFilters(),
                 HiveExamsByRazred(),
                 AddNewExamFloatingActionButton()

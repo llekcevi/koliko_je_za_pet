@@ -7,6 +7,7 @@ import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'screens/home_page.dart';
 
+//razmisliti o loading screenu? Možda i ne treba jer je circual progress ok i razumljiv
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 

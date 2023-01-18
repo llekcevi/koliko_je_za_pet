@@ -2,6 +2,9 @@ import 'package:hive/hive.dart';
 
 part 'model.g.dart';
 
+// ako bi se radile funkcije kojima korisnik može uređivati bodovni rang,
+// trebalo bi napraviti još polja za upis graničnih bodova
+
 @HiveType(typeId: 0)
 class Exam {
   @HiveField(0)
