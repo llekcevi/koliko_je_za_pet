@@ -12,6 +12,8 @@ import 'package:kolko_je_za_pet/firestore_functions.dart';
 
 // urediti hasError slučaj
 
+// preseliti u simple dialog
+
 class Authetication extends ConsumerWidget {
   const Authetication({super.key});
 
@@ -20,48 +22,50 @@ class Authetication extends ConsumerWidget {
     final examsBox = Hive.box("exams");
     final google = ref.read(googleSignInProvider);
     final userStateChange = FirebaseAuth.instance.authStateChanges();
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            StreamBuilder(
-                stream: userStateChange,
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(google.currentUser!.displayName!),
-                        ElevatedButton(
-                            onPressed: (() {
-                              final id = google.currentUser!.uid;
-                              syncExams(id, examsBox);
-                            }),
-                            child: Text("sinkroniziraj")),
-                        ElevatedButton(
-                            child: Text("google logout"),
-                            onPressed: () {
-                              FirebaseAuth.instance.signOut();
-                            }),
-                      ],
-                    );
-                  } else if (snapshot.hasError) {
-                    return Text(snapshot.error.toString());
-                  } else {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                            child: Text("google login"),
-                            onPressed: () {
-                              google.googleLogin();
-                            }),
-                      ],
-                    );
-                  }
-                }),
-          ],
-        ),
+    return AlertDialog(
+      content: StreamBuilder(
+        stream: userStateChange,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return SizedBox(
+              height: 200,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(google.currentUser!.displayName!),
+                  Divider(),
+                  ElevatedButton(
+                      onPressed: (() {
+                        final id = google.currentUser!.uid;
+                        syncExams(id, examsBox);
+                      }),
+                      child: Text("sinkroniziraj")),
+                  ElevatedButton(
+                      child: Text("google logout"),
+                      onPressed: () {
+                        FirebaseAuth.instance.signOut();
+                      }),
+                ],
+              ),
+            );
+          } else if (snapshot.hasError) {
+            return Text(snapshot.error.toString());
+          } else {
+            return SizedBox(
+              height: 300,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                      child: Text("google login"),
+                      onPressed: () {
+                        google.googleLogin();
+                      }),
+                ],
+              ),
+            );
+          }
+        },
       ),
     );
   }
