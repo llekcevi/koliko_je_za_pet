@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:kolko_je_za_pet/provider.dart';
 
-//izdvojiti funkciju koja napravi listu unique razreda
 //izdvojiti funkciju za border radius i zasebni style file
 class HiveRazredFilters extends ConsumerWidget {
   const HiveRazredFilters({super.key});
@@ -14,13 +13,7 @@ class HiveRazredFilters extends ConsumerWidget {
     final selectedRazred = ref.watch(razredFilterProvider);
     final razredProvider = ref.read(razredFilterProvider.notifier);
 
-    List razredi = [];
-    for (int exam = 0; exam < examsBox.length; exam++) {
-      final exams = examsBox.getAt(exam);
-
-      !razredi.contains(exams.razred) ? razredi.add(exams.razred) : null;
-    }
-    razredi.sort();
+    List<dynamic> razredi = getUniqueRazred(examsBox);
 
     return SizedBox(
         width: double.infinity,
@@ -45,6 +38,17 @@ class HiveRazredFilters extends ConsumerWidget {
             ),
           ),
         ));
+  }
+
+  List<dynamic> getUniqueRazred(Box<dynamic> examsBox) {
+    List razredi = [];
+    for (int exam = 0; exam < examsBox.length; exam++) {
+      final exams = examsBox.getAt(exam);
+
+      !razredi.contains(exams.razred) ? razredi.add(exams.razred) : null;
+    }
+    razredi.sort();
+    return razredi;
   }
 
   RoundedRectangleBorder listTileBorderRadius() {
