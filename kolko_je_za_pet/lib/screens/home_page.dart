@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:kolko_je_za_pet/hive_functions.dart';
 import 'package:kolko_je_za_pet/widgets/hive/hive_exams_by_razred.dart';
 import 'package:kolko_je_za_pet/widgets/buttons/add_new_exam_floating_action_button.dart';
 import 'package:kolko_je_za_pet/auth/authetication.dart';
 
 import '../widgets/hive/hive_razred_filters.dart';
+
+//sync funkcija bi trebala odmah osvježiti homepage
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -19,14 +20,13 @@ class HomePage extends StatelessWidget {
             IconButton(
                 onPressed: (() {
                   deleteAllExams();
-                  print(Hive.box("exams"));
                 }),
                 icon: Icon(Icons.clear)),
             IconButton(
-                onPressed: (() => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: ((context) => const Authetication())))),
+                onPressed: (() => showDialog(
+                    context: context,
+                    builder: ((BuildContext context) =>
+                        const Authetication()))),
                 icon: Icon(Icons.person))
           ],
         ),
