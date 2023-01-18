@@ -5,6 +5,8 @@ import 'package:hive/hive.dart';
 final db = FirebaseFirestore.instance;
 final ispiti = db.collection("ispiti");
 final users = db.collection("users");
+// možda redovno pozivati ovu funkciju ako korisnik ostane logiran tako da
+// svaki put kad npr. gasi ili upali app, prvo napravi sinkronizaciju
 
 // razmisliti o svim slučajevima korištenja funkcije sync exams
 // - što ako se korisnik prijavljuje u svoj račun na novom mobitelu, što ako se prijavljuje na tuđem
