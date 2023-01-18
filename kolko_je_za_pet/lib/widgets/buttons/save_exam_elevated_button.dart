@@ -5,7 +5,8 @@ import 'package:kolko_je_za_pet/provider.dart';
 import 'package:kolko_je_za_pet/hive_functions.dart';
 import 'package:kolko_je_za_pet/screens/home_page.dart';
 
-class SaveExamElevatedButton extends ConsumerWidget {
+//ne treba consumer widget
+class SaveExamElevatedButton extends StatelessWidget {
   const SaveExamElevatedButton({
     Key? key,
     required this.exam,
@@ -20,7 +21,7 @@ class SaveExamElevatedButton extends ConsumerWidget {
   final TextEditingController bodoviController;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return ElevatedButton(
         onPressed: () {
           exam.naziv = nazivController.text;
