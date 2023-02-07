@@ -1,5 +1,0 @@
-
- GameInfo([luka, iva], [23, 34], 2022-06-16 14:49:00.379705)
- GameInfo([buba, iva, luka], [12, 23, 34], 2022-06-16 14:49:24.835322)
- GameInfo([luka, iva], {baseCardPoints: 0, pointTokens: 0, prosperityBonusCardPoints: 0, jurneyPoints: 0, events: 0}, 2022-06-19 13:55:42.945978)
- GameInfo([iva, luka], [{baseCardPoints: 12, pointTokens: 13, prosperityBonusCardPoints: 14, jurneyPoints: 0, events: 16, Journey points: 15}, {baseCardPoints: 12, pointTokens: 13, prosperityBonusCardPoints: 14, jurneyPoints: 0, events: 16, Journey points: 15}], 2022-06-19 14:32:57.482579)

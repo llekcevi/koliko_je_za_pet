@@ -14,14 +14,16 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
+          title: Text("Koliko je za pet?"),
           actions: [
-            IconButton(
+            /* IconButton(
                 onPressed: (() {
                   deleteAllExams();
                 }),
-                icon: Icon(Icons.clear)),
+                icon: Icon(Icons.clear)), */
             IconButton(
                 onPressed: (() => showDialog(
                     context: context,

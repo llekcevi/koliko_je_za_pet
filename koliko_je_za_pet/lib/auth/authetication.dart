@@ -56,8 +56,9 @@ class Authetication extends ConsumerWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Text("Prijavi se pomoću Google korisničkog računa"),
                   ElevatedButton(
-                      child: Text("google login"),
+                      child: Text("Prijava"),
                       onPressed: () {
                         google.googleLogin();
                       }),

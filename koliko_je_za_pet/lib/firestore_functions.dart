@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'model.dart';
 import 'package:hive/hive.dart';
 
+//firebase android!!!!
+
 final db = FirebaseFirestore.instance;
 final ispiti = db.collection("ispiti");
 final users = db.collection("users");
