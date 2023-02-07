@@ -31,7 +31,7 @@ void main() async {
               ),
             );
           } else if (snapshot.hasData) {
-            return const HomePage();
+            return HomePage();
           } else {
             return const CircularProgressIndicator();
           }
