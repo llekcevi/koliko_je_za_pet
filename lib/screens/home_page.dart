@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Koliko je za pet?"),
+          title: Text("Koliko je za pet? offline"),
           actions: [
             /* IconButton(
                 onPressed: (() {
