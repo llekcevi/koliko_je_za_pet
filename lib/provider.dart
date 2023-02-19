@@ -32,32 +32,3 @@ class RazredFilterState extends StateNotifier<int> {
 final razredFilterProvider =
     StateNotifierProvider<RazredFilterState, int>((ref) => RazredFilterState());
 //-------------------------
-
-//Google Sign In
-//--------------
-class GoogleSignInState extends ChangeNotifier {
-  final googleSignIn = GoogleSignIn();
-
-  GoogleSignInAccount? _user;
-
-  GoogleSignInAccount get user => _user!;
-
-  Future googleLogin() async {
-    final googleUser = await googleSignIn.signIn();
-    if (googleUser == null) return;
-    _user = googleUser;
-
-    final googleAuth = await googleUser.authentication;
-
-    final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
-
-    await FirebaseAuth.instance.signInWithCredential(credential);
-  }
-
-  final currentUser = FirebaseAuth.instance.currentUser;
-}
-
-final googleSignInProvider =
-    ChangeNotifierProvider<GoogleSignInState>((ref) => GoogleSignInState());
-//--------------
