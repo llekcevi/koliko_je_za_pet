@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kolko_je_za_pet/model.dart';
 import 'package:kolko_je_za_pet/provider.dart';
 import 'package:kolko_je_za_pet/hive_functions.dart';

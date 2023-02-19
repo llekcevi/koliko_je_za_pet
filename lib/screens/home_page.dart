@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:kolko_je_za_pet/hive_functions.dart';
 import 'package:kolko_je_za_pet/widgets/hive/hive_exams_by_razred.dart';
 import 'package:kolko_je_za_pet/widgets/buttons/add_new_exam_floating_action_button.dart';
-import 'package:kolko_je_za_pet/auth/authetication.dart';
 
 import '../widgets/hive/hive_razred_filters.dart';
 
@@ -19,17 +18,11 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           title: Text("Koliko je za pet? offline"),
           actions: [
-            /* IconButton(
+            IconButton(
                 onPressed: (() {
                   deleteAllExams();
                 }),
-                icon: Icon(Icons.clear)), */
-            IconButton(
-                onPressed: (() => showDialog(
-                    context: context,
-                    builder: ((BuildContext context) =>
-                        const Authetication()))),
-                icon: Icon(Icons.person))
+                icon: Icon(Icons.clear)),
           ],
         ),
         body: SafeArea(
