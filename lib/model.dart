@@ -35,7 +35,6 @@ class Exam {
     List<int> points4 = betterGrades.sublist(
         (betterGrades.length / 2).round() - (betterGrades.length % 2),
         betterGrades.length);
-    ;
 
     List<int> points3 =
         worseGrades.sublist(0, (worseGrades.length / 2).round());
