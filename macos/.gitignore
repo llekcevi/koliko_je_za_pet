@@ -1,0 +1,9 @@
+firebase_app_id_file.json
+
+# Flutter-related
+**/Flutter/ephemeral/
+**/Pods/
+
+# Xcode-related
+**/dgph
+**/xcuserdata/
