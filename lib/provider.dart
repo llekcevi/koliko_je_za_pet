@@ -30,3 +30,13 @@ class RazredFilterState extends StateNotifier<int> {
 final razredFilterProvider =
     StateNotifierProvider<RazredFilterState, int>((ref) => RazredFilterState());
 //-------------------------
+
+// Provider for changes in exam list
+class ExamListChange extends StateNotifier<int> {
+  ExamListChange() : super(0);
+  void rebuild() => state += 1;
+}
+
+final examListChangeProvider =
+    StateNotifierProvider<ExamListChange, int>((ref) => ExamListChange());
+//----------------------------------

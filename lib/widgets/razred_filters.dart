@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
@@ -10,6 +9,7 @@ class HiveRazredFilters extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(examListChangeProvider);
     final examsBox = Hive.box("exams");
     final selectedRazred = ref.watch(razredFilterProvider);
     final razredProvider = ref.read(razredFilterProvider.notifier);
