@@ -13,7 +13,10 @@ class NazivTextField extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text("Naziv ispita: "),
+        const Text(
+          "Naziv ispita: ",
+          style: TextStyle(fontSize: 20),
+        ),
         TextField(
           autocorrect: false,
           controller: nazivController,

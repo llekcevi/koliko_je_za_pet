@@ -34,21 +34,29 @@ class _SaveExamState extends ConsumerState<SaveExam> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   NazivTextField(nazivController: nazivController),
+                  const SizedBox(height: 20),
                   RazredTextField(razredController: razredController),
+                  const SizedBox(height: 20),
                   GradesColumn(exam: exam),
-                  SaveExamElevatedButton(
-                      exam: exam,
-                      nazivController: nazivController,
-                      razredController: razredController,
-                      bodoviController: bodoviController),
-                  ElevatedButton(
-                      onPressed: () {
-                        clearTextEditingProviders(nazivController,
-                            razredController, bodoviController);
-                        Navigator.of(context)
-                            .popUntil(((route) => route.isFirst));
-                      },
-                      child: const Text("Odustani"))
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                          onPressed: () {
+                            clearTextEditingProviders(nazivController,
+                                razredController, bodoviController);
+                            Navigator.of(context)
+                                .popUntil(((route) => route.isFirst));
+                          },
+                          child: const Text("Odustani")),
+                      SaveExamElevatedButton(
+                          exam: exam,
+                          nazivController: nazivController,
+                          razredController: razredController,
+                          bodoviController: bodoviController),
+                    ],
+                  ),
                 ],
               ),
             ),

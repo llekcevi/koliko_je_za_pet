@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class InputPointsTextField extends StatelessWidget {
   const InputPointsTextField({
@@ -11,6 +12,7 @@ class InputPointsTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
       textAlign: TextAlign.center,
       keyboardType: TextInputType.number,
       controller: bodoviController,
