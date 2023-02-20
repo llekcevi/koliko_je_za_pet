@@ -13,3 +13,9 @@ void deleteAllExams() {
 
   examsBox.clear();
 }
+
+void deleteExam(Exam exam) {
+  final examsBox = Hive.box("exams");
+  var key = exam.key;
+  examsBox.delete(key);
+}

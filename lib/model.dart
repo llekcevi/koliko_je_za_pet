@@ -6,7 +6,7 @@ part 'model.g.dart';
 // trebalo bi napraviti još polja za upis graničnih bodova
 
 @HiveType(typeId: 0)
-class Exam {
+class Exam extends HiveObject {
   @HiveField(0)
   String? naziv;
   @HiveField(1)

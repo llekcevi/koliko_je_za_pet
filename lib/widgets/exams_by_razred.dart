@@ -1,10 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:kolko_je_za_pet/provider.dart';
 import 'package:kolko_je_za_pet/model.dart';
 import 'package:kolko_je_za_pet/widgets/grades_column.dart';
+import 'package:kolko_je_za_pet/widgets/confirm_delete.dart';
 
 class HiveExamsByRazred extends ConsumerWidget {
   const HiveExamsByRazred({super.key});
@@ -22,7 +22,28 @@ class HiveExamsByRazred extends ConsumerWidget {
             Exam exam = exams.elementAt(index);
             return ExpansionTile(
               title: Text(exam.naziv!),
-              children: [GradesColumn(exam: exam)],
+              children: [
+                GradesColumn(exam: exam),
+                Padding(
+                  padding: const EdgeInsets.only(right: 30.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      TextButton(
+                          onPressed: () {
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) =>
+                                    ConfirmDelete(
+                                      examToDelete: exam,
+                                    ));
+                            //deleteExam(exam);
+                          },
+                          child: Text("Obriši")),
+                    ],
+                  ),
+                )
+              ],
             );
           })),
     );

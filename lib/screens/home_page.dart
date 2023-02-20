@@ -5,24 +5,22 @@ import 'package:kolko_je_za_pet/widgets/buttons/add_new_exam_floating_action_but
 
 import '../widgets/razred_filters.dart';
 
-//sync funkcija bi trebala odmah osvježiti homepage
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-//extract custom appBar widget
+// [] extract custom appBar widget
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Koliko je za pet? offline"),
+          title: const Text("Koliko je za pet? offline"),
           actions: [
             IconButton(
                 onPressed: (() {
                   deleteAllExams();
                 }),
-                icon: Icon(Icons.clear)),
+                icon: const Icon(Icons.clear)),
           ],
         ),
         body: SafeArea(
