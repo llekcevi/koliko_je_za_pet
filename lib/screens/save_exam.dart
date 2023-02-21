@@ -43,6 +43,8 @@ class _SaveExamState extends ConsumerState<SaveExam> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.red),
                           onPressed: () {
                             clearTextEditingProviders(nazivController,
                                 razredController, bodoviController);

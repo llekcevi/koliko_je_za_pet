@@ -14,39 +14,38 @@ class HiveExamsByRazred extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final examsBox = Hive.box("exams");
     final razred = ref.watch(razredFilterProvider);
-    final exams = examsBox.values.where((element) => element.razred == razred);
+    final exams = examsBox.values
+        .cast<Exam>()
+        .where((element) => element.razred == razred);
     ref.watch(examListChangeProvider);
     return Expanded(
       child: ListView.builder(
           itemCount: exams.length,
           itemBuilder: ((context, index) {
             Exam exam = exams.elementAt(index);
-            return ValueListenableBuilder(
-              valueListenable: examsBox.listenable(),
-              builder: (context, value, child) => ExpansionTile(
-                title: Text(exam.naziv!),
-                children: [
-                  GradesColumn(exam: exam),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 30.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        TextButton(
-                            onPressed: () {
-                              showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      ConfirmDelete(
-                                        examToDelete: exam,
-                                      ));
-                            },
-                            child: Text("Obriši")),
-                      ],
-                    ),
-                  )
-                ],
-              ),
+            return ExpansionTile(
+              title: Text(exam.naziv!),
+              children: [
+                GradesColumn(exam: exam),
+                Padding(
+                  padding: const EdgeInsets.only(right: 30.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      TextButton(
+                          onPressed: () {
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) =>
+                                    ConfirmDelete(
+                                      examToDelete: exam,
+                                    ));
+                          },
+                          child: Text("Obriši")),
+                    ],
+                  ),
+                )
+              ],
             );
           })),
     );

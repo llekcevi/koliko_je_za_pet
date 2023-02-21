@@ -17,12 +17,15 @@ class NazivTextField extends StatelessWidget {
           "Naziv ispita: ",
           style: TextStyle(fontSize: 20),
         ),
-        TextField(
-          autocorrect: false,
-          controller: nazivController,
-          keyboardType: TextInputType.text,
-          textAlign: TextAlign.center,
-          decoration: const InputDecoration(border: OutlineInputBorder()),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: TextField(
+            autocorrect: false,
+            controller: nazivController,
+            keyboardType: TextInputType.text,
+            textAlign: TextAlign.center,
+            decoration: const InputDecoration(border: OutlineInputBorder()),
+          ),
         ),
       ],
     );
