@@ -34,7 +34,7 @@ class HiveRazredFilters extends ConsumerWidget {
               },
               title: Text(
                 textAlign: TextAlign.center,
-                razredi[index].toString(),
+                "${razredi[index].toString()}.",
               ),
             ),
           ),
