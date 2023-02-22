@@ -18,12 +18,14 @@ class HiveExamsByRazred extends ConsumerWidget {
         .cast<Exam>()
         .where((element) => element.razred == razred);
     ref.watch(examListChangeProvider);
+
     return Expanded(
       child: ListView.builder(
           itemCount: exams.length,
           itemBuilder: ((context, index) {
             Exam exam = exams.elementAt(index);
             return ExpansionTile(
+              key: UniqueKey(),
               title: Text(exam.naziv!),
               children: [
                 GradesColumn(exam: exam),
