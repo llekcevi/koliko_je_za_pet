@@ -17,6 +17,8 @@ Dodirom plave tipke na dnu ekrana dodajemo novi ispit. U okviru koji se pojavlju
  ![Dodavanje ispita - demo](https://github.com/llekcevi/koliko_je_za_pet/blob/offline/assets/demo-dodavanje.gif)
  
  <b>3. Brisanje ispita</b>
+
+ U pregledu ispita odaberemo jedan ispit nakon čega vidimo pregled bodova po ocjenama te u donjem desnom kutu kartice tipku "Obriši". Pokazuje se okvir za provjeru gdje možemo potvrditi brisanje ili odustati od brisanja.
  
 ![Brisanje ispita - demo](https://github.com/llekcevi/koliko_je_za_pet/blob/offline/assets/demo-brisanje.gif)
 
