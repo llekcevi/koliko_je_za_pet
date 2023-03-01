@@ -52,11 +52,16 @@ class _SaveExamState extends ConsumerState<SaveExam> {
                                 .popUntil(((route) => route.isFirst));
                           },
                           child: const Text("Odustani")),
-                      SaveExamElevatedButton(
-                          exam: exam,
-                          nazivController: nazivController,
-                          razredController: razredController,
-                          bodoviController: bodoviController),
+                      ValueListenableBuilder<TextEditingValue>(
+                        valueListenable: nazivController,
+                        builder: (context, value, child) =>
+                            SaveExamElevatedButton(
+                                value: value,
+                                exam: exam,
+                                nazivController: nazivController,
+                                razredController: razredController,
+                                bodoviController: bodoviController),
+                      ),
                     ],
                   ),
                 ],
