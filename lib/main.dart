@@ -15,6 +15,7 @@ void main() async {
 
   runApp(ProviderScope(
     child: MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: FutureBuilder(
         future: Hive.openBox("exams"),
         builder: (context, snapshot) {
