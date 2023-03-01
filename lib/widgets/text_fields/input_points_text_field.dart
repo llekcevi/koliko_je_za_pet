@@ -12,6 +12,9 @@ class InputPointsTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      decoration: InputDecoration(
+          filled: true,
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20))),
       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
       textAlign: TextAlign.center,
       keyboardType: TextInputType.number,

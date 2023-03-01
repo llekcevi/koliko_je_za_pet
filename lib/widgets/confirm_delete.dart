@@ -13,7 +13,9 @@ class ConfirmDelete extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     {
       return AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         content: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
             const Text(
@@ -21,7 +23,11 @@ class ConfirmDelete extends ConsumerWidget {
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             const Divider(),
-            Text("Naziv ispita: ${examToDelete.naziv!}"),
+            const SizedBox(height: 10),
+            Text(
+              "Naziv ispita: ${examToDelete.naziv!}",
+            ),
+            const SizedBox(height: 10),
             Text("Razred: ${examToDelete.razred.toString()}."),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,

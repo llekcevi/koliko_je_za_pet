@@ -25,14 +25,16 @@ class HiveRazredFilters extends ConsumerWidget {
           itemBuilder: (context, index) => SizedBox(
             width: MediaQuery.of(context).size.width / 4,
             child: ListTile(
+              style: ListTileTheme.of(context).style,
               shape: listTileBorderRadius(),
               selected: selectedRazred == razredi[index] ? true : false,
               tileColor: Theme.of(context).highlightColor,
-              selectedTileColor: Colors.white,
+              selectedTileColor: Theme.of(context).listTileTheme.tileColor,
               onTap: () {
                 razredProvider.chooseRazredFilter(razredi[index]);
               },
               title: Text(
+                style: TextStyle(fontWeight: FontWeight.w600),
                 textAlign: TextAlign.center,
                 "${razredi[index].toString()}.",
               ),

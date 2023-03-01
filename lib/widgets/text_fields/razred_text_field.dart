@@ -28,8 +28,11 @@ class RazredTextField extends StatelessWidget {
             controller: razredController,
             keyboardType: TextInputType.number,
             textAlign: TextAlign.center,
-            decoration: const InputDecoration(
-                border: OutlineInputBorder(), counter: SizedBox.shrink()),
+            decoration: InputDecoration(
+                filled: true,
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(40)),
+                counter: SizedBox.shrink()),
           ),
         )
       ],

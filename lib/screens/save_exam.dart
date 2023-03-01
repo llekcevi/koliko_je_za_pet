@@ -25,7 +25,9 @@ class _SaveExamState extends ConsumerState<SaveExam> {
     final bodoviController = ref.read(bodoviProvider);
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
+        appBar: AppBar(title: Text("Spremi ispit")),
         body: SafeArea(
           child: Container(
             padding: const EdgeInsets.all(10),

@@ -14,10 +14,9 @@ class InputPoints extends ConsumerWidget {
     final bodoviController = ref.read(bodoviProvider);
 
     return AlertDialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       title: const Text("Broj bodova"),
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 100,
-      ),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 100, vertical: 10),
       content: InputPointsTextField(bodoviController: bodoviController),
       actions: [
         CancelAlertDialogTextButton(bodoviController: bodoviController),

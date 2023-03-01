@@ -17,6 +17,9 @@ class NazivTextField extends StatelessWidget {
           "Naziv ispita: ",
           style: TextStyle(fontSize: 20),
         ),
+        SizedBox(
+          height: 10,
+        ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: TextField(
@@ -24,7 +27,10 @@ class NazivTextField extends StatelessWidget {
             controller: nazivController,
             keyboardType: TextInputType.text,
             textAlign: TextAlign.center,
-            decoration: const InputDecoration(border: OutlineInputBorder()),
+            decoration: InputDecoration(
+                filled: true,
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(40))),
           ),
         ),
       ],
