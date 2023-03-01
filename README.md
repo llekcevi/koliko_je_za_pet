@@ -2,13 +2,23 @@
 
 Kad sam radio u školi, ovo pitanje čuo sam prije, za vrijeme i nakon svakog ispita. Kako bih si olakšao praćenje različitih ispita u različitim razredima, odlučio sam napraviti mobilnu aplikaciju koja pohranjuje ispite i podatke o bodovima potrebnima za određenu ocjenu.
 
- - Pregled ispita
+## Funkcije
 
-	Tabovi s rednim brojevima označavaju razrede, pa tako možemo pregledati ispite koje smo unijeli za peti, sedmi ili osmi razred.
+ <b>1. Pregled ispita</b>
+
+Tabovi s rednim brojevima označavaju razrede, pa tako možemo pregledati ispite koje smo unijeli za peti, sedmi ili osmi razred.
+
 ![Pregled ispita - demo](https://github.com/llekcevi/koliko_je_za_pet/blob/offline/assets/demo-pregled.gif)
 
- - Dodavanje ispita
- - Brisanje ispita
+ <b>2. Dodaj novi ispit</b>
+ 
+Dodirom plave tipke na dnu ekrana dodajemo novi ispit. U okviru koji se pojavljuje upisujemo broj bodova, a zatim dodirnemo tipku "Nastavi". U novom zaslonu vidimo raspon bodova po ocjenama i unosimo naziv ispita i razred u kojem je održan.
+ 
+ ![Dodavanje ispita - demo](https://github.com/llekcevi/koliko_je_za_pet/blob/offline/assets/demo-dodavanje.gif)
+ 
+ <b>3. Brisanje ispita</b>
+ 
+![Brisanje ispita - demo](https://github.com/llekcevi/koliko_je_za_pet/blob/offline/assets/demo-brisanje.gif)
 
 ## Tehnologija
 
