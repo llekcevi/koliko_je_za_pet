@@ -5,7 +5,7 @@ Kad sam radio u školi, ovo pitanje čuo sam prije, za vrijeme i nakon svakog is
  - Pregled ispita
 
 	Tabovi s rednim brojevima označavaju razrede, pa tako možemo pregledati ispite koje smo unijeli za peti, sedmi ili osmi razred.
-	![Pregled ispita - demo](https://github.com/llekcevi/koliko_je_za_pet/blob/offline/assets/demo-pregled.gif)
+![Pregled ispita - demo](https://github.com/llekcevi/koliko_je_za_pet/blob/offline/assets/demo-pregled.gif)
 
  - Dodavanje ispita
  - Brisanje ispita
